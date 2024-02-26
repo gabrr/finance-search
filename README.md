@@ -71,7 +71,7 @@ Tests were made for each requirement of the challenge using e2e Cypress.
 In production set variable:
 
 ```
-REACT_APP_API_URL=path
+REACT_APP_API_URL=https://financedaily-f2ee6ac18745.herokuapp.com
 ```
 
 Locally it will proxy to server at localhost:3001.
