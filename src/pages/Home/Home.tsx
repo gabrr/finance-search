@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
-import "react-toastify/dist/ReactToastify.css";
 import { IFinanceSearchItem } from "src/data/models/IFinanceSearchItem";
 import { getFinanceItems } from "src/services/financeItems";
-import "tailwindcss/tailwind.css";
 import SearchForm from "./SearchForm";
 import {
   Animations,
