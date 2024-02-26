@@ -47,6 +47,15 @@ the request will be proxied to `http://localhost/api/data?...`
 
 Components follow biology system, in larger projects we will have Templates, Pages, Organisms, Molecules and Atoms.
 
+## UX considerations
+
+- Type 'budget' to see list items handles bigger than container text.
+- Suggestions if user types something not existing
+- The app handles 404, Network error and empty state.
+- Input has validations logging with toastfy.
+- HTML semantic for screen readers and keyboard navigation.
+
+
 ## Services Folder
 
 In this folder you find Single Responsibility, Open Closed principles and Dependency Injection pattern.
@@ -56,4 +65,16 @@ Our API depends of the abstraction to work, and if we ever want use something di
 ## Tests
 
 Tests were made for each requirement of the challenge using e2e Cypress.
-````
+
+## Enviroment
+
+In production set variable:
+
+```
+REACT_APP_API_URL=path
+```
+
+Locally it will proxy to server at localhost:3001.
+
+
+
