@@ -4,7 +4,7 @@
 
 Install dependencies and run:
 
-````
+```
 yarn && yarn dev
 ```
 
