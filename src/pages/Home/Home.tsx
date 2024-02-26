@@ -1,11 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { IFinanceSearchItem } from "src/data/models/IFinanceSearchItem";
 import { getFinanceItems } from "src/services/financeItems";
 import "tailwindcss/tailwind.css";
 import SearchForm from "./SearchForm";
-import { ListItem } from "src/components/molecules";
+import {
+  Animations,
+  ErrorState,
+  ListItem,
+  NotFoundState,
+} from "src/components/molecules";
 
 function Home() {
   const [query, setQuery] = useState<null | string>("budget");
@@ -16,6 +21,26 @@ function Home() {
     enabled: query !== null,
     staleTime: 60 * 1_000,
   });
+
+  const handleRendering = useCallback(() => {
+    if (isLoading)
+      return (
+        <Animations.Loading data-test="loading" className="w-3/5 mx-auto" />
+      );
+
+    if (isError) return <ErrorState message={error?.message} />;
+
+    if (!data?.length && query !== null)
+      return (
+        <>
+          <NotFoundState />
+        </>
+      );
+
+    return data?.map((item, index) => (
+      <ListItem key={item.id} index={index} {...item} />
+    ));
+  }, [isLoading, isError, data, error?.message, query]);
 
   return (
     <main className="w-full max-w-2xl mx-auto p-5">
@@ -29,9 +54,7 @@ function Home() {
           className="sticky mx-auto top-8 w-full max-w-lg z-20 mb-10"
         />
 
-        {data?.map((item, index) => (
-          <ListItem key={item.id} index={index} {...item} />
-        ))}
+        {handleRendering()}
       </div>
     </main>
   );

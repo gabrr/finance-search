@@ -1,9 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
-import "tailwindcss/tailwind.css";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Home from "./pages/Home/Home";
+import "tailwindcss/tailwind.css";
+import { Animations } from "./components/molecules/animations";
+import { Routes } from "./utils";
 
 const queryClient = new QueryClient();
 
@@ -22,14 +23,12 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <header className="bg-red-100">
-          <h1>Search UI Challenge</h1>
-          [Your UI here]
-        </header>
-      </div>
+      <Routes />
 
-      <Home />
+      {/*<Animations.NotFoundError />
+      <Animations.Loading />
+      <Animations.NetworkError />
+      <Animations.EmptyState />*/}
 
       <ToastContainer
         position="top-right"
