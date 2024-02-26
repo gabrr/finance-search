@@ -13,6 +13,7 @@ import {
 } from "../atoms";
 
 import { Tooltip } from "../molecules";
+import { calculateDelay } from "src/utils";
 
 const ICONS: { [key in CategoryKeys]: ReactNode } = {
   BLOG_POSTS: <IoDocumentsSharp />,
@@ -32,7 +33,10 @@ const ListItem: React.FC<ListItemProps> = ({
   index,
 }) => (
   <div
-    className="border border-gray-200 px-5 py-3 border-solid rounded-lg"
+    style={{
+      animationDelay: calculateDelay(index),
+    }}
+    className="transform-gpu opacity-0 animate-fade-in-down border border-gray-200 px-5 py-3 border-solid rounded-lg"
     data-test="list-item"
   >
     <div className="flex gap-3 items-center mb-1">

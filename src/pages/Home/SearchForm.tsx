@@ -3,7 +3,7 @@ import React from "react";
 import { useForm, SubmitHandler, SubmitErrorHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SearchIcon } from "src/components/atoms";
-import { notify } from "src/utils/toaster";
+import { notify } from "src/utils";
 
 const searchSchema = z.object({
   query: z
@@ -63,13 +63,13 @@ const SearchForm: React.FC<SearchFormProps> = ({
         <input
           type="search"
           {...register("query")}
-          className="block w-full p-4 ps-10 text-sm text-gray-900 border focus:ring-4 focus:outline-none focus:ring-transparent rounded-lg backdrop-blur-[8px] bg-[rgba(255,255,255,0.2)]"
+          className="block w-full p-4 ps-10 placeholder:text-[10px] sm:placeholder:text-sm  text-sm text-gray-900 border focus:ring-4 focus:outline-none focus:ring-transparent rounded-lg backdrop-blur-[8px] bg-[rgba(255,255,255,0.2)]"
           placeholder={placeholder}
         />
 
         <button
           type="submit"
-          className="text-gray-100 absolute right-2 top-1/2 translate-y-[-50%] bg-gray-500 hover:bg-gray-600 transition-colors focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs md:text-sm px-4 py-2"
+          className="text-gray-100 absolute right-2 top-1/2 translate-y-[-50%] bg-sky-600 hover:bg-sky-700 transition-colors focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs sm:text-sm px-4 py-2"
         >
           Search
         </button>
