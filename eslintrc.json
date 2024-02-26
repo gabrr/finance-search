@@ -1,0 +1,30 @@
+{
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "react-app",
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/comma-spacing": "off",
+    "@typescript-eslint/return-await": "off",
+    "no-redeclare": "off",
+    "import/export": "off"
+  },
+  "ignorePatterns": ["src/**/*.json"]
+}
