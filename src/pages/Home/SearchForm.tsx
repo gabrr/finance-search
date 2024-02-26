@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, SubmitHandler, SubmitErrorHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SearchIcon } from "src/components/atoms";
+import { notify } from "src/utils/toaster";
 
 const searchSchema = z.object({
   query: z
@@ -39,7 +40,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
 
   const onErrors: SubmitErrorHandler<SearchFormData> = (errors) => {
     if (errors.query) {
-      console.error(errors.query.message);
+      notify.info("Search Field", errors.query.message);
     }
   };
 
