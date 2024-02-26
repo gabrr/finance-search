@@ -11,9 +11,10 @@ import {
   ListItem,
   NotFoundState,
 } from "src/components/molecules";
+import { Suggestions } from "src/components/organisms";
 
 function Home() {
-  const [query, setQuery] = useState<null | string>("budget");
+  const [query, setQuery] = useState<null | string>(null);
 
   const { data, isLoading, error, isError } = useQuery<IFinanceSearchItem[]>({
     queryKey: ["financeItems", query],
@@ -34,6 +35,7 @@ function Home() {
       return (
         <>
           <NotFoundState />
+          <Suggestions />
         </>
       );
 
