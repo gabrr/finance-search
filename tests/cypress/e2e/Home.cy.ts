@@ -94,7 +94,17 @@ describe("Home page", () => {
       .should("have.attr", "target", "_blank");
   });
 
-  it("Scenario: Search results shall be marked as their content type", () => {});
+  it("Scenario: Search results shall be marked as their content type", () => {
+    performSearch("click");
+
+    cy.get('[data-test="icon-VIDEOS"]')
+      .last()
+      .trigger("mouseover")
+      .parent()
+      .find('[data-test="tooltip-content"]');
+
+    cy.should("contain.text", "Videos");
+  });
 
   it("Scenario: The user shall be informed if no search results match their query", () => {
     performSearch("click", "the most random thing ever");

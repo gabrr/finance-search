@@ -1,13 +1,18 @@
 import React, { ReactNode } from "react";
+
 import {
+  Category,
   CategoryKeys,
   IFinanceSearchItem,
 } from "../../data/models/IFinanceSearchItem.d";
+
 import {
   BsMusicNoteList,
   IoDocumentsSharp,
   MdOutlinePlayCircleFilled,
 } from "../atoms";
+
+import { Tooltip } from "../molecules";
 
 const ICONS: { [key in CategoryKeys]: ReactNode } = {
   BLOG_POSTS: <IoDocumentsSharp />,
@@ -31,7 +36,9 @@ const ListItem: React.FC<ListItemProps> = ({
     data-test="list-item"
   >
     <div className="flex gap-3 items-center mb-1">
-      {ICONS[category]}
+      <Tooltip data-test={`icon-${category}`} text={Category[category]}>
+        {ICONS[category]}
+      </Tooltip>
 
       <a
         data-test="list-item-title-link"
